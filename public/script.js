@@ -32,3 +32,23 @@ async function fetchAndRenderShoes() {
 
     //document.getElementById("shoes-list-components").innerHTML = shoesHTML;
 }
+document.getElementbyId('create-shoes').onsubmit = async function(event) {
+    /*
+    A kiírás része:
+    */
+   event.preventDefault();
+   const tipus = event.target.elements.tipus.value;
+   const meret = event.target.elements.meret.value;
+   const gyarto = event.target.elements.gyarto.value;
+   const leiras = event.target.elements.leiras.value;
+   const honlap = event.target.elements.honlap.value;
+   const ar = event.target.elements.ar.value;
+   console.log(`Az új cipő: ${tipus} ${meret} ${gyarto} ${leiras} ${honlap} ${ar}`);
+   
+    if( res.ok ){
+        fetchAndRenderShoes();
+    } else {
+        console.log("Hiba történt");
+        alert("A szerver a kérést nem tudta feldolgozni");
+    }
+}
