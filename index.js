@@ -1,9 +1,14 @@
 const http = require('http');
 const fs = require('fs');
+const static = require ('node-static');
 const port = 4444;
+const kep = new(static.Server)('./images');
 
 const server = http.createServer((req,res) =>{
- 
+    req.addListener('end', function (){
+        kep.serve(req, res)
+    }).resume()
+    
 
     console.log(req.url);
     console.log(req.method);
